@@ -2,26 +2,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Calculate {
 
     public static Calendar c = Calendar.getInstance();
 
-    public static String getToday()
+    public static void  getToday()
     {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
 
-        return format.format(date);
+        System.out.println("And since today is " + format.format(date) + ",");
     }
 
-    public static String getUD()
+    public static void getUD()
     {
         Date date = c.getTime();
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
 
-        return format.format(date);
+        System.out.println(format.format(date));
     }
 
     public static void setUD(String date) throws ParseException
@@ -30,34 +31,30 @@ public class Calculate {
         c.setTime(data);
     }
 
-    public static String getDay()
+    public static void getDay()
     {
         SimpleDateFormat format = new SimpleDateFormat("EEEE");
 
-        return format.format(c.getTime()).toUpperCase();
+        System.out.println("That means you were born on a " + format.format(c.getTime()).toUpperCase() + "!");
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void getDayOfYear()
+    {
+        Date date = new Date();
+        Calendar current  = new GregorianCalendar();
+        current.setTime(date);
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your birthday");
+        int year = current.get(Calendar.YEAR);
 
-        Boolean set = true;
+        c.set(Calendar.YEAR, year);
 
-        while(set){
+        SimpleDateFormat format = new SimpleDateFormat("EEEE");
+        System.out.println("This year it falls on a " + format.format(c.getTime()).toUpperCase() + "...");
+    }
 
-            String userDate = scanner.nextLine();
-            Calculate.setUD(userDate);
-            System.out.println("Test" + Calculate.getUD());
-            Calculate.getDay();
+    public static void calculateDay()
+    {
 
-            set = false;
-
-            Calculate.getToday();
-
-
-
-        }
     }
 }
 

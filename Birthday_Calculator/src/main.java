@@ -11,7 +11,7 @@ public class main {
         birthCal = new Calculate();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your birthday");
+        System.out.println("What is your birthday? ");
 
         Boolean set = true;
 
@@ -21,10 +21,12 @@ public class main {
             birthCal.setUD(userDate);
             birthCal.getUD();
             birthCal.getDay();
+            birthCal.getDayOfYear();
 
             set = false;
 
             birthCal.getToday();
+
 
 
 
